@@ -5,8 +5,8 @@ class ContribuyenteForm(forms.Form):
     denominacion=forms.CharField(max_length=40, label='Denominación', required = True)
     domicilio= forms.CharField(max_length=50, label='Domicilio', required = True)
     email = forms.EmailField(label='e-mail')
-    empleador = forms.BooleanField(label='Es Empleador')
-    empleado = forms.BooleanField(label='Es Empleado')
+    empleador = forms.BooleanField(label='Es Empleador', initial = False)
+    empleado = forms.BooleanField(label='Es Empleado', initial = False)
     activo = forms.BooleanField(label= 'Activo',required = True, initial = True )
 
 class EmpleadoForm(forms.Form):
@@ -16,3 +16,8 @@ class EmpleadoForm(forms.Form):
     fecha_inicio = forms.DateField (label= 'Fecha de Inicio')
     conyuje = forms.BooleanField (label='Conyuje a Cargo')
     hijos = forms.IntegerField (label = 'Cantidad de Hijos') 
+
+class ConceptoForm (forms.Form):
+    id_concepto = forms.IntegerField (label=id)
+    descripcion = forms.CharField (max_length=30, label='Concepto')
+    remunerativo = forms.BooleanField (label= 'Es remunerativo', initial = True)

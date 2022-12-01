@@ -1,0 +1,28 @@
+{% extends "./padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Listado de Contribuyentes</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<h2>Listado de Conceptos (Descripción - Remunerativo)</h2>
+<ul>
+<h1> </h1><br><br>
+    {% for concepto in conceptos %}
+
+
+    <li>{{ conceoto.descripcion }} - {{ concepto.remunerativo }}
+
+    <br> 
+    </li>
+    
+    <a class="btn btn-success" href = "{% url 'editarConcepto' concepto.id %}">Editar</a><br><br>
+    {% endfor %}
+
+
+</ul>
+
+
+{% endblock %}
