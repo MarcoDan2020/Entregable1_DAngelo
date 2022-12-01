@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="rel" href="{% static 'assets/favicon.ico' %}">
+        <link rel="src" href="{% static 'js/scrips.js' %}">
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -17,8 +24,8 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Liquidación Impuesto</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href = 'https://google.com'>Contribuyentes</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Empleados</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href = "{% url 'contribuyente' %}" >Contribuyentes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href= "{% url 'leerContribuyentes' %}">Listado Contribuyentes</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Liquidación</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
@@ -35,15 +42,12 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="#!">Inicio</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="{% url 'inicio' %}" >Inicio</a></li>
+                                
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                        
                                     </div>
                                 </li>
                             </ul>
@@ -52,8 +56,8 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    {% block %}
-                    {% end block %}
+                    {% block contenido_que_cambia %}
+                    {% endblock %}
                 </div>
             </div>
         </div>

@@ -6,6 +6,9 @@ from .forms import ContribuyenteForm
 
 
 
+def inicio(request):
+    return render(request, "inicio.html")
+
 def contribuyente(request):
 
     if request.method=="POST":
@@ -31,9 +34,14 @@ def contribuyente(request):
                 activo =  activo,
                 )
             contribuyente1.save()
-            return render (request, "inicio.html")
+            return render (request, "contribuyente.html")
     else:
         formulario=ContribuyenteForm()
 
 
-    return render(request, "contribuyenteFormulario", {"form":formulario})
+    return render(request, "contribuyente.html", {"form":formulario})
+
+
+def leerContribuyentes(request):
+    contribuyentes=Contribuyente.objects.all()
+    return render(request, "leerContribuyentes.html", {"contribuyentes":contribuyentes})

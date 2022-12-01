@@ -1,0 +1,28 @@
+{% extends "./padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Listado de Contribuyentes</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<h2>Listado de Contribuyentes (CUIT - Denominación - Empleador - Empleado)</h2>
+<ul>
+<h1> </h1><br><br>
+    {% for contribuyente in contribuyentes %}
+
+
+    <li>{{ contribuyente.cuit }} - {{ contribuyente.denominacion }} - {{ contribuyente.empleador }} - {{ contribuyente.empleado }}
+
+       
+    </li>
+    
+    <a class="btn btn-success" href="{% url 'inicio'  %}">Editar</a>
+    {% endfor %}
+
+
+</ul>
+<h3>{{ mensaje }}</h3>
+
+{% endblock %}
