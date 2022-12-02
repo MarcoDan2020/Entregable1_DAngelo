@@ -3,22 +3,22 @@
 {% load static %}
 
 {% block titulo %}
-<h1 class="mb-5">Listado de Contribuyentes</h1>
+<h1 class="mb-5">Listado de Empleados</h1>
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<h2>Listado de Empleados (CUIT - Denominación - Empleador - Empleado)</h2>
+<h2>Listado de Empleados (CUIT - CUIT Empleador - Legajo - Fecha de Ingreso)</h2>
 <ul>
 <h1> </h1><br><br>
-    {% for contribuyente in contribuyentes %}
+    {% for empleado in empleados %}
 
 
-    <li>{{ contribuyente.cuit }} - {{ contribuyente.denominacion }} - {{ contribuyente.empleador }} - {{ contribuyente.empleado }}
+    <li>{{ empleado.cuit }} - {{ empleado.cuit_empleador }} - {{ empleado.legajo }} - {{ empleado.fecha_ingreso }}
 
     <br> 
     </li>
     
-    <a class="btn btn-success" href = "{% url 'editarContribuyente' contribuyente.cuit %}">Editar</a><br><br>
+    
     {% endfor %}
 
 

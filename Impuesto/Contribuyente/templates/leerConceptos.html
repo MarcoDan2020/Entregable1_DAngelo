@@ -13,12 +13,12 @@
     {% for concepto in conceptos %}
 
 
-    <li>{{ conceoto.descripcion }} - {{ concepto.remunerativo }}
+    <li>{{ concepto.descripcion }} - {{ concepto.remunerativo }}
 
     <br> 
     </li>
     
-    <a class="btn btn-success" href = "{% url 'editarConcepto' concepto.id %}">Editar</a><br><br>
+
     {% endfor %}
 
 

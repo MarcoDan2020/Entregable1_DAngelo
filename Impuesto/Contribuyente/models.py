@@ -31,7 +31,6 @@ class Empleado (models.Model):
         return self.cuit+" - "+str(self.denominacion)
 
 class Concepto_Ingreso (models.Model):
-    id_concepto = models.AutoField (primary_key=True)
     descripcion = models.CharField (max_length=30, verbose_name='Concepto')
     remunerativo = models.BooleanField ()
 

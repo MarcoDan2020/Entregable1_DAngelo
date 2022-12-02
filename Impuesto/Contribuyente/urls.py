@@ -5,6 +5,7 @@ urlpatterns = [
     path ('contribuyente/', contribuyente, name='contribuyente'),
     path ('leerContribuyentes/', leerContribuyentes, name ='leerContribuyentes'),
     path ('editarContribuyente/', editarContribuyente, name ='editarContribuyente'),
+    path ('empleado/', empleado, name ='empleado'),
     path ('leerEmpleados/', leerEmpleados, name ='leerEmpleados'),
     path ('concepto/', concepto, name ='concepto'),
     path ('leerConceptos/', leerConceptos, name ='leerConceptos'),

@@ -14,10 +14,9 @@ class EmpleadoForm(forms.Form):
     cuit_empleador= forms.IntegerField(label='CUIT Empleador')
     legajo = forms.CharField (max_length=10, label='Legajo')
     fecha_inicio = forms.DateField (label= 'Fecha de Inicio')
-    conyuje = forms.BooleanField (label='Conyuje a Cargo')
-    hijos = forms.IntegerField (label = 'Cantidad de Hijos') 
+    conyuje = forms.BooleanField (label='Conyuje a Cargo', initial = False)
+    hijos = forms.IntegerField (label = 'Cantidad de Hijos', initial = 0) 
 
 class ConceptoForm (forms.Form):
-    id_concepto = forms.IntegerField (label=id)
     descripcion = forms.CharField (max_length=30, label='Concepto')
     remunerativo = forms.BooleanField (label= 'Es remunerativo', initial = True)

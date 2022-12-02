@@ -88,12 +88,10 @@ def concepto (request):
         
         if form.is_valid():
             informacion=form.cleaned_data
-            id_concepto = informacion ['id_concepto']
             descripcion = informacion ['descripcion']
             remunerativo = informacion ['remunerativo']
             
             concepto1 = Concepto_Ingreso(
-                id_concepto = id_concepto,
                 descripcion = descripcion,
                 remunerativo = remunerativo
                 )
@@ -104,3 +102,41 @@ def concepto (request):
 
 
     return render(request, "concepto.html", {"form":formulario})
+
+def leerConceptos(request):
+    conceptos=Concepto_Ingreso.objects.all()
+    return render(request, "leerConceptos.html", {"conceptos":conceptos})
+
+def empleado (request):
+    if request.method=="POST":
+        form=EmpleadoForm(request.POST)
+        
+        if form.is_valid():
+            informacion=form.cleaned_data
+            cuit = informacion ['cuit']
+            cuit_empleador = informacion ['cuit_empleador']
+            legajo = informacion ['legajo']
+            fecha_inicio = informacion ['fecha_inicio']
+            conyuje = informacion ['conyuje']
+            hijos = informacion ['hijos']
+
+            empleado1 = Empleado(
+                cuit = cuit,
+                cuit_empleador =  cuit_empleador,
+                legajo =  legajo,
+                fecha_inicio =  fecha_inicio,
+                conyuje =  conyuje,
+                hijos =  hijos
+                )
+            empleado1.save()
+            return render (request, "empleado.html")
+    else:
+        formulario=EmpleadoForm()
+
+
+    return render(request, "empleado.html", {"form":formulario})
+
+def leerEmpleados(request):
+    empleados=Empleado.objects.all()
+    return render(request, "leerEmpleados.html", {"empleados":empleados})
+

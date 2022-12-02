@@ -7,4 +7,6 @@ from .models import *
 
 
 admin.site.register(Contribuyente)
+admin.site.register(Empleado)
+admin.site.register(Concepto_Ingreso)
 
