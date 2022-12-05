@@ -5,8 +5,8 @@ class ContribuyenteForm(forms.Form):
     denominacion=forms.CharField(max_length=40, label='Denominación', required = True)
     domicilio= forms.CharField(max_length=50, label='Domicilio', required = True)
     email = forms.EmailField(label='e-mail')
-    empleador = forms.BooleanField(label='Es Empleador', initial = False)
-    empleado = forms.BooleanField(label='Es Empleado', initial = False)
+    empleador = forms.BooleanField(label='Es Empleador', initial = False, required = False)
+    empleado = forms.BooleanField(label='Es Empleado', initial = False, required = False)
     activo = forms.BooleanField(label= 'Activo',required = True, initial = True )
 
 class EmpleadoForm(forms.Form):

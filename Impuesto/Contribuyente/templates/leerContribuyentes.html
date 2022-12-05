@@ -7,14 +7,26 @@
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<h2>Listado de Contribuyentes (CUIT - Denominación - Empleador - Empleado)</h2>
+<h2>Listado de Contribuyentes</h2>
 <ul>
-<h1> </h1><br><br>
+<h1> </h1><br>
+  
     {% for contribuyente in contribuyentes %}
+        
+        <li><b>CUIT:</b>  {{ contribuyente.cuit }}<br>Denominación:  {{ contribuyente.denominacion }} <br>
+        {% if contribuyente.empleador %}
+            <label><input type="checkbox" name="empleador" checked  onclick="return false;"> empleador</label><br>
+        {% else %}
+            <label><input type="checkbox" name="empleador" onclick="return false;"> empleador</label><br>
+        {% endif %}
+        {% if contribuyente.empleado %}
+            <label><input type="checkbox" name="empleado" checked  onclick="return false;"> Empleador</label><br>
+        {% else %}
+            <label><input type="checkbox" name="empleado" onclick="return false;"> Empleado</label><br>
+        {% endif %}
 
 
-    <li>{{ contribuyente.cuit }} - {{ contribuyente.denominacion }} - {{ contribuyente.empleador }} - {{ contribuyente.empleado }}
-
+        <a class "btn btn-succes" href="{% url 'editarContribuyente' contribuyente.cuit  %}">Editar</a>
     <br> 
     </li>
     

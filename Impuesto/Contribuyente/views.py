@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from .models import Contribuyente, Empleado, Concepto_Ingreso
 from .forms import ContribuyenteForm, EmpleadoForm, ConceptoForm 
 
-
+from django.urls import reverse
 
 def inicio(request):
     return render(request, "inicio.html")
@@ -37,6 +37,7 @@ def contribuyente(request):
             return render (request, "contribuyente.html")
     else:
         formulario=ContribuyenteForm()
+        
 
 
     return render(request, "contribuyente.html", {"form":formulario})
@@ -46,8 +47,8 @@ def leerContribuyentes(request):
     contribuyentes=Contribuyente.objects.all()
     return render(request, "leerContribuyentes.html", {"contribuyentes":contribuyentes})
 
-def editarContribuyente (request, cuit):
-    contribuyente=Contribuyente.objects.get(cuit=cuit)
+def editarContribuyente (request, contribuyente_cuit):
+    contribuyente=Contribuyente.objects.get(cuit=contribuyente_cuit)
     if request.method=="POST":
         form=ContribuyenteForm (request.POST)
         print(form)

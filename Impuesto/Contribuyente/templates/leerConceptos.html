@@ -7,22 +7,31 @@
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<h2>Listado de Conceptos (Descripción - Remunerativo)</h2>
-<ul>
-<h1> </h1><br><br>
-    {% for concepto in conceptos %}
+
+<div 
+    <style> 
+        div {
+            padding: 16px;
+            background-color: #00FF00;
+            }
+    </style>
+    <h2>Listado de Conceptos (Descripción - Remunerativo)</h2>
+    <ul>
+    <h1> </h1><br><br>
+        {% for concepto in conceptos %}
 
 
-    <li>{{ concepto.descripcion }} - {{ concepto.remunerativo }}
+        <li>{{ concepto.descripcion }} - {{ concepto.remunerativo }}
 
-    <br> 
-    </li>
-    
+        <br> 
+        </li>
+        
 
-    {% endfor %}
+        {% endfor %}
 
 
-</ul>
+    </ul>
+</div>
 
 
 {% endblock %}

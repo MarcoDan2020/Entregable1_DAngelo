@@ -13,7 +13,7 @@ class Contribuyente (models.Model):
         ordering = ["-cuit"]
 
     def __str__(self):
-        return self.cuit+" - "+str(self.denominacion)
+        return str(self.cuit) +" - "+ self.denominacion
 
 
 class Empleado (models.Model):
@@ -28,7 +28,7 @@ class Empleado (models.Model):
         ordering = ["-cuit"]
 
     def __str__(self):
-        return self.cuit+" - "+str(self.denominacion)
+        return str(self.cuit) + " - " + self.denominacion
 
 class Concepto_Ingreso (models.Model):
     descripcion = models.CharField (max_length=30, verbose_name='Concepto')
