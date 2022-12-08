@@ -194,3 +194,6 @@ def leerConceptos(request):
     conceptos=Concepto_Ingreso.objects.all()
     return render(request, "leerConceptos.html", {"conceptos":conceptos})
 
+
+
+

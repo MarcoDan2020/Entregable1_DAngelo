@@ -17,15 +17,15 @@
   
     {% for empleado in empleados %}
         
-        <li><b> CUIL:</b>           {{ empleado.cuit }}<br>
-                CUIT Empleador:     {{ empleado.cuit_empleador }}<br>
-                Fecha de Ingreso:   {{ empleado.fecha_inicio }}<br>
+        <li><b> CUIL:</b>{{ empleado.cuit }}<br>
+                CUIT Empleador: {{ empleado.cuit_empleador }}<br>
+                Fecha de Ingreso: {{ empleado.fecha_inicio }}<br>
         {% if empleado.conyuje %}
             <label><input type="checkbox" name="conyuge" checked  onclick="return false;"> Conyuge</label><br>
         {% else %}
             <label><input type="checkbox" name="conyuge" onclick="return false;"> conyuje</label><br>
         {% endif %}
-                Hijos:              {{ empleado.hijos }}<br>
+                Hijos:{{ empleado.hijos }}<br>
 
         <a href="{% url 'editarEmpleado' empleado.cuit  %}" 
             method="POST"><button style = 'margin: 1rem 0;
