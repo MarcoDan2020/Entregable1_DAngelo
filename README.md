@@ -27,7 +27,7 @@ Rubicon SLIG se encuentra en la primera etapa de desarrollo
 
 Permite hasta el momento:
 - Agregar , listar, editar y buscar un Contribuyente
-- Agregar y listar y editar un Empleado
+- Agregar , listar y editar un Empleado
 - Agregar y listar un Concepto de Ingreso
 
 
