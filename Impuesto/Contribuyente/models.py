@@ -21,14 +21,14 @@ class Empleado (models.Model):
     cuit_empleador= models.IntegerField(verbose_name='CUIT Empleador')
     legajo = models.CharField (max_length=10, verbose_name='Legajo')
     fecha_inicio = models.DateField (verbose_name= 'Fecha de Inicio')
-    conyuje = models.BooleanField (verbose_name='Conyuje a Cargo')
+    conyuje = models.BooleanField (verbose_name='Conyuge a Cargo')
     hijos = models.IntegerField (verbose_name='Cantidad de Hijos a Cargo') 
         
     class Meta:
         ordering = ["-cuit"]
 
     def __str__(self):
-        return str(self.cuit) + " - " + self.denominacion
+        return str(self.cuit) + " - " + self.legajo
 
 class Concepto_Ingreso (models.Model):
     descripcion = models.CharField (max_length=30, verbose_name='Concepto')

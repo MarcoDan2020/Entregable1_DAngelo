@@ -34,7 +34,7 @@ def contribuyente(request):
                 activo =  activo,
                 )
             contribuyente1.save()
-            return render (request, "contribuyente.html")
+            return render (request, "inicio.html", {"mensaje":"Contribuyente cargado"})
     else:
         formulario=ContribuyenteForm()
         
@@ -47,15 +47,29 @@ def leerContribuyentes(request):
     contribuyentes=Contribuyente.objects.all()
     return render(request, "leerContribuyentes.html", {"contribuyentes":contribuyentes})
 
-def editarContribuyente (request, contribuyente_cuit):
-    contribuyente=Contribuyente.objects.get(cuit=contribuyente_cuit)
+
+def resultadosBusquedaContribuyente (request):
+
+    if 'cuit' in request.GET:
+        
+
+        cuit = request.GET['cuit']
+
+        contribuyentes = Contribuyente.objects.filter(cuit=cuit)
+        return render(request,"leerContribuyentes.html", {"contribuyentes":contribuyentes , "mensaje":"CUIT encontrada:"})
+    else:
+        return render(request, "leerContribuyentes.html")
+
+
+def editarContribuyente (request, cuit):
+    contribuyente=Contribuyente.objects.get(cuit=cuit)
     if request.method=="POST":
         form=ContribuyenteForm (request.POST)
         print(form)
         if form.is_valid():
             informacion=form.cleaned_data
             print(informacion)
-                  
+
             if form.is_valid():
                 informacion=form.cleaned_data
                 contribuyente.cuit = informacion ['cuit']
@@ -69,8 +83,9 @@ def editarContribuyente (request, contribuyente_cuit):
                 contribuyente.save()
                 contribuyentes=Contribuyente.objects.all()
 
-                return render (request, "lerContribuyentes.html", {"mensaje": "El Contribuyente ha sido correctamente editado!", "contribuyentes":contribuyentes})
+                return render (request, "leerContribuyentes.html", {"mensaje": "El Contribuyente ha sido correctamente editado!", "contribuyentes":contribuyentes})
     else:
+        
         formulario = ContribuyenteForm (initial={
                 'cuit':contribuyente.cuit,
                 'denominacion':contribuyente.denominacion,
@@ -83,30 +98,7 @@ def editarContribuyente (request, contribuyente_cuit):
     return render(request, "editarContribuyente.html", {"form":formulario, "contribuyente":contribuyente})
 
 
-def concepto (request):
-    if request.method=="POST":
-        form=ConceptoForm(request.POST)
-        
-        if form.is_valid():
-            informacion=form.cleaned_data
-            descripcion = informacion ['descripcion']
-            remunerativo = informacion ['remunerativo']
-            
-            concepto1 = Concepto_Ingreso(
-                descripcion = descripcion,
-                remunerativo = remunerativo
-                )
-            concepto1.save()
-            return render (request, "concepto.html")
-    else:
-        formulario=ConceptoForm()
 
-
-    return render(request, "concepto.html", {"form":formulario})
-
-def leerConceptos(request):
-    conceptos=Concepto_Ingreso.objects.all()
-    return render(request, "leerConceptos.html", {"conceptos":conceptos})
 
 def empleado (request):
     if request.method=="POST":
@@ -130,7 +122,7 @@ def empleado (request):
                 hijos =  hijos
                 )
             empleado1.save()
-            return render (request, "empleado.html")
+            return render (request, "inicio.html")
     else:
         formulario=EmpleadoForm()
 
@@ -140,4 +132,65 @@ def empleado (request):
 def leerEmpleados(request):
     empleados=Empleado.objects.all()
     return render(request, "leerEmpleados.html", {"empleados":empleados})
+
+def editarEmpleado (request, cuit):
+    empleado=Empleado.objects.get(cuit=cuit)
+    if request.method=="POST":
+        form=EmpleadoForm (request.POST)
+        print(form)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            print(informacion)
+
+            if form.is_valid():
+                informacion=form.cleaned_data
+                empleado.cuit = informacion ['cuit']
+                empleado.cuit_empleador = informacion ['cuit_empleador']
+                empleado.legajo = informacion ['legajo']
+                empleado.fecha_inicio = informacion ['fecha_inicio']
+                empleado.conyuje = informacion ['conyuje']
+                empleado.hijos = informacion ['hijos']
+                
+
+                empleado.save()
+                empleados=Empleado.objects.all()
+
+                return render (request, "leerEmpleados.html", {"mensaje": "El Empleado ha sido correctamente editado!", "empleados":empleados})
+    else:
+        
+        formulario = EmpleadoForm (initial={
+                'cuit':empleado.cuit,
+                'cuit_empleador':empleado.cuit_empleador,
+                'legajo' : empleado.legajo,
+                'fecha_inicio':empleado.fecha_inicio,
+                'conyuje':empleado.conyuje,
+                'hijos':empleado.hijos
+                })
+    return render(request, "editarEmpleado.html", {"form":formulario, "empleado":empleado})
+
+
+def concepto (request):
+    if request.method=="POST":
+        form=ConceptoForm(request.POST)
+        
+        if form.is_valid():
+            informacion=form.cleaned_data
+            descripcion = informacion ['descripcion']
+            remunerativo = informacion ['remunerativo']
+            
+            concepto1 = Concepto_Ingreso(
+                descripcion = descripcion,
+                remunerativo = remunerativo
+                )
+            concepto1.save()
+            return render (request, "inicio.html")
+    else:
+        formulario=ConceptoForm()
+
+
+    return render(request, "concepto.html", {"form":formulario})
+
+def leerConceptos(request):
+    conceptos=Concepto_Ingreso.objects.all()
+    return render(request, "leerConceptos.html", {"conceptos":conceptos})
 

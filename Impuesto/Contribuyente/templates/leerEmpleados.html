@@ -7,22 +7,43 @@
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<h2>Listado de Empleados (CUIT - CUIT Empleador - Legajo - Fecha de Ingreso)</h2>
+<h2>Listado de Empleados</h2>
+
+{{ mensaje }}
+
+{% if empleados %}
 <ul>
-<h1> </h1><br><br>
+    <h1> </h1><br>
+  
     {% for empleado in empleados %}
+        
+        <li><b> CUIL:</b>           {{ empleado.cuit }}<br>
+                CUIT Empleador:     {{ empleado.cuit_empleador }}<br>
+                Fecha de Ingreso:   {{ empleado.fecha_inicio }}<br>
+        {% if empleado.conyuje %}
+            <label><input type="checkbox" name="conyuge" checked  onclick="return false;"> Conyuge</label><br>
+        {% else %}
+            <label><input type="checkbox" name="conyuge" onclick="return false;"> conyuje</label><br>
+        {% endif %}
+                Hijos:              {{ empleado.hijos }}<br>
 
-
-    <li>{{ empleado.cuit }} - {{ empleado.cuit_empleador }} - {{ empleado.legajo }} - {{ empleado.fecha_ingreso }}
-
+        <a href="{% url 'editarEmpleado' empleado.cuit  %}" 
+            method="POST"><button style = 'margin: 1rem 0;
+            color: #ffffff;
+            background-color: #1883ba;
+            border: 0;
+            border-radius: 10px;
+            padding: 5px 20px;
+            opacity: 0.9'  >Editar</button></a>
     <br> 
     </li>
     
-    
     {% endfor %}
 
+{% else %}
 
+    <p> NO EXISTE EMPLRADO</p>
 </ul>
-
+{% endif %}
 
 {% endblock %}

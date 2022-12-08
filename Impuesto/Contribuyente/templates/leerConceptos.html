@@ -9,20 +9,19 @@
 {% block contenido_que_cambia %}
 
 <div 
-    <style> 
-        div {
-            padding: 16px;
-            background-color: #00FF00;
-            }
-    </style>
-    <h2>Listado de Conceptos (Descripción - Remunerativo)</h2>
+    
+    <h2>Listado de Conceptos </h2>
     <ul>
-    <h1> </h1><br><br>
+    <h1> </h1><br>
         {% for concepto in conceptos %}
 
 
-        <li>{{ concepto.descripcion }} - {{ concepto.remunerativo }}
-
+        <li><b>Concepto:</b> {{ concepto.descripcion }} <br>
+            {% if concepto.remunerativo %}
+            <label><input type="checkbox" name="remunerativo" checked  onclick="return false;"> Remunerativo</label><br>
+        {% else %}
+            <label><input type="checkbox" name="remunerativo" onclick="return false;"> Remunerativo</label><br>
+        {% endif %}
         <br> 
         </li>
         

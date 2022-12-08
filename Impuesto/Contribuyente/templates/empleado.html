@@ -13,13 +13,20 @@
     
     {% csrf_token %}
 
-    <h1> </h1><br><br><br>
+    <h2>Alta de Empeados </h2><br>
     <table><center>
         {{ form.as_table }}
     </center></table>
     
     
-    <input type="submit" value="Guardar">
+    <input type="submit" value="Guardar"
+        style = 'margin: 1rem 0;
+        color: #ffffff;
+        background-color: #1883ba;
+        border: 0;
+        border-radius: 10px;
+        padding: 5px 20px;
+        opacity: 0.9'  >
     
     
     </form>

@@ -1,0 +1,55 @@
+{% extends "./padre.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="rel" href="{% static 'assets/favicon.ico' %}">
+<link rel="src" href="{% static 'js/scrips.js' %}">
+{% block titulo %}
+<h1 class="mb-5">Listado de Contribuyentes</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<h2>Listado de Contribuyentes</h2>
+
+{% if contribuyentes %}
+    <ul>
+        <h1> </h1><br>
+    
+        {% for contribuyente in contribuyentes %}
+            
+            <li><b>CUIT:</b>  {{ contribuyente.cuit }}<br>Denominación:  {{ contribuyente.denominacion }} <br>
+            {% if contribuyente.empleador %}
+                <label><input type="checkbox" name="empleador" checked  onclick="return false;"> empleador</label><br>
+            {% else %}
+                <label><input type="checkbox" name="empleador" onclick="return false;"> empleador</label><br>
+            {% endif %}
+            {% if contribuyente.empleado %}
+                <label><input type="checkbox" name="empleado" checked  onclick="return false;"> Empleador</label><br>
+            {% else %}
+                <label><input type="checkbox" name="empleado" onclick="return false;"> Empleado</label><br>
+            {% endif %}
+
+
+            <a href="{% url 'editarContribuyente' contribuyente.cuit  %}" 
+                method="POST"><button style = 'margin: 1rem 0;
+                color: #ffffff;
+                background-color: #1883ba;
+                border: 0;
+                border-radius: 10px;
+                padding: 5px 20px;
+                opacity: 0.9'  >Editar</button></a>
+        <br> 
+        </li>
+        
+        {% endfor %}
+
+    </ul>
+    
+{% else %}
+
+    <p> NO EXISTE LA CUIT SOLICITADA</p>
+    
+{% endif %}
+
+
+{% endblock %}
