@@ -26,9 +26,9 @@ Reempaza las planillas en Excel por un sistema integral y con las actualizacione
 Rubicon SLIG se encuentra en la primera etapa de desarrollo 
 
 Permite hasta el momento:
-- Agregar y editar un Contribuyente
-- Agregar y editar un Empleado
-- Agregar y editar un Concepto de Ingreso
+- Agregar , listar, editar y buscar un Contribuyente
+- Agregar y listar y editar un Empleado
+- Agregar y listar un Concepto de Ingreso
 
 
 ## Instalación y acceso
@@ -38,12 +38,11 @@ Desde Visual Studio Code ejecutar el la terminal
 
 cd Impuesto
 python manage.py runserver
-Copiar la dirección en el explorador que usualmente uses
-Borra en la dirección /home
-Agregar en la dirección '/Contribuyente
-Se accede al sistema
 
-En el futuro se debe acceder desde home
+Para ingresar al inicio se debe ingresar a traves de la dirección de local server generado por el runserver y se accede a http://localhost:8000/home/
+Esta es la pagina de inicio desde donde se acceden a todas las opciones del sistema
+
+
 
 En la margen izquierda aparecen los siguientes accesos:
 - Contribuyente: dar de alta un contribuyente, con los siguientes datos
@@ -55,6 +54,7 @@ En la margen izquierda aparecen los siguientes accesos:
     -   Es Empleado: tildar si es empleado
     -   Activo: tidar si está activo
 - Listado de Contribuyentes: Lista todos los Contribuyentes y permite modoficar uno en particular
+- Busqueda de un Contribuyente por CUIT
 - Empleados: dar de alta un Empleado
     - CUIT Empleador
     - CUIT Empleado
